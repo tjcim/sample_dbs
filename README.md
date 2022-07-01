@@ -12,6 +12,11 @@ MySQL
 docker run --rm -d --name sakila_mysql tjcim/sample_dbs:mysql
 ```
 
+MSSQL
+```bash
+docker run --rm -d --name sakila_mssql tjcim/sample_dbs:mssql
+```
+
 ## Building the Images Locally
 
 ### PostgreSQL
@@ -31,11 +36,8 @@ docker build -f mysql/Dockerfile -t tjcim/sample_dbs:mysql ./mysql
 docker run --rm -d --name sakila_mysql tjcim/sample_dbs:mysql
 # if you want to open the port, do this instead
 # docker run --rm -d -p 3306:3306 --name sakila_mysql tjcim/sample_dbs:mysql
-docker exec -it sakila_mysql mysql -p  # password is mysql
+docker exec -it sakila_mysql mysql -pmysql -u root --host 0.0.0.0 --port 3306
 ```
-
-[MSSQL](https://github.com/twright-msft/mssql-node-docker-demo-app)
-[MSSQL](https://hub.docker.com/_/microsoft-mssql-server)
 
 ### SQLite3
 
@@ -44,4 +46,14 @@ To create the database from the sql files create the database file `sqlite3 data
 ```
 .read schema.sql
 .read insert.sql
+```
+
+### MSSQL
+
+```bash
+docker build -f mssql/Dockerfile -t tjcim/sample_dbs:mssql ./mssql
+docker run --rm -d --name sakila_mssql tjcim/sample_dbs:mssql
+# if you want to open the port, do this instead
+# docker run --rm -d -p 1433:1433 --name sakila_mssql tjcim/sample_dbs:mssql
+docker exec -it sakila_mssql /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P S@mpleDBs1 -d sakila
 ```
