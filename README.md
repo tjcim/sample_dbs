@@ -17,7 +17,21 @@ MSSQL
 docker run --rm -d --name sakila_mssql tjcim/sample_dbs:mssql
 ```
 
+**NOTE:** `sqlcmd` will only run the SQL commands when you have `GO` on a line by itself. For example to select all rows from the actor table:
+
+```sql
+select * from actor;
+go
+```
+
 ## Building the Images Locally
+
+Clone the repo and then `cd` into it:
+
+```bash
+git clone https://github.com/tjcim/sample_dbs.git
+cd sample_dbs
+```
 
 ### PostgreSQL
 
@@ -36,7 +50,7 @@ docker build -f mysql/Dockerfile -t tjcim/sample_dbs:mysql ./mysql
 docker run --rm -d --name sakila_mysql tjcim/sample_dbs:mysql
 # if you want to open the port, do this instead
 # docker run --rm -d -p 3306:3306 --name sakila_mysql tjcim/sample_dbs:mysql
-docker exec -it sakila_mysql mysql -pmysql -u root --host 0.0.0.0 --port 3306
+docker exec -it sakila_mysql mysql -pmysql -u root --host 127.0.0.1 --port 3306
 ```
 
 ### SQLite3
@@ -49,6 +63,8 @@ To create the database from the sql files create the database file `sqlite3 data
 ```
 
 ### MSSQL
+
+**Remember to have `GO` on a line by itself**
 
 ```bash
 docker build -f mssql/Dockerfile -t tjcim/sample_dbs:mssql ./mssql
