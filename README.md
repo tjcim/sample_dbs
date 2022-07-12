@@ -4,17 +4,17 @@
 
 PostgreSQL
 ```bash
-docker run --rm -d --name sakila_postgres tjcim/sample_dbs:postgres
+docker run --rm -d --name postgres tjcim/sample_dbs:postgres
 ```
 
 MySQL
 ```bash
-docker run --rm -d --name sakila_mysql tjcim/sample_dbs:mysql
+docker run --rm -d --name mysql tjcim/sample_dbs:mysql
 ```
 
 MSSQL
 ```bash
-docker run --rm -d --name sakila_mssql tjcim/sample_dbs:mssql
+docker run --rm -d --name mssql tjcim/sample_dbs:mssql
 ```
 
 **NOTE:** `sqlcmd` will only run the SQL commands when you have `GO` on a line by itself. For example to select all rows from the actor table:
