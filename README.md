@@ -1,5 +1,7 @@
 # Sample Databases
 
+https://medium.com/swlh/python-flask-with-graphql-server-with-sqlalchemy-and-graphene-and-sqlite-ac9fcc9d3d83
+
 ## Running the Docker Images
 
 PostgreSQL
@@ -22,6 +24,11 @@ docker run --rm -d --name sakila_mssql tjcim/sample_dbs:mssql
 ```sql
 select * from actor;
 go
+```
+
+GraphQL
+```bash
+docker run --rm -d --name graphql -p 4000:4000 tjcim/sample_dbs:graphql
 ```
 
 ## Building the Images Locally
@@ -73,3 +80,12 @@ docker run --rm -d --name sakila_mssql tjcim/sample_dbs:mssql
 # docker run --rm -d -p 1433:1433 --name sakila_mssql tjcim/sample_dbs:mssql
 docker exec -it sakila_mssql /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P S@mpleDBs1 -d sakila
 ```
+
+### GraphQL
+
+```bash
+docker build -f graphql/Dockerfile -t tjcim/sample_dbs:graphql ./graphql
+docker run --rm -d --name graphql -p 4000:4000 tjcim/sample_dbs:graphql
+```
+
+Then visit [`http://localhost:4000`](http://localhost:4000)

@@ -1,0 +1,31 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "description": "Dockerized GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "start:dev": "nodemon --exec babel-node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjcim/sample_dbs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tjcim/sample_dbs/issues"
+  },
+  "homepage": "https://github.com/tjcim/sample_dbs#readme",
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/node": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.10.0",
+    "express": "^4.18.1",
+    "graphql": "^16.5.0"
+  }
+}
