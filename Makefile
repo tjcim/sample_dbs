@@ -1,4 +1,4 @@
-.PHONY: postgres mysql mssql graphql
+.PHONY: postgres mysql mssql graphql sqlite
 .DEFAULT_GOAL := postgres
 
 REPO=tjcim/sample_dbs
@@ -22,3 +22,8 @@ graphql:
 	@echo "Building graphql"
 	docker build -f graphql/Dockerfile -t ${REPO}:graphql ./graphql
 	docker push ${REPO}:graphql
+
+sqlite:
+	@echo "Building sqlite"
+	docker build -f sqlite/Dockerfile -t ${REPO}:sqlite ./sqlite
+	docker push ${REPO}:sqlite

@@ -29,6 +29,11 @@ GraphQL
 docker run --rm -d --name graphql -p 4000:4000 tjcim/sample_dbs:graphql
 ```
 
+sqlite
+```bash
+docker run --rm -d --name sqlite tjcim/sample_dbs:sqlite
+```
+
 ## Building the Images Locally
 
 Clone the repo and then `cd` into it:
@@ -60,11 +65,9 @@ docker exec -it sakila_mysql mysql -pmysql -u root --host 127.0.0.1 --port 3306
 
 ### SQLite3
 
-To create the database from the sql files create the database file `sqlite3 database.db`. Then read in the files:
-
-```
-.read schema.sql
-.read insert.sql
+```bash
+docker build -f sqlite/Dockerfile -t tjcim/sample_dbs:sqlite ./sqlite
+docker run --rm -d --name sqlite tjcim/sample_dbs:sqlite
 ```
 
 ### MSSQL
