@@ -5,16 +5,19 @@
 PostgreSQL
 ```bash
 docker run --rm -d --name postgres tjcim/sample_dbs:postgres
+docker exec -it postgres psql -d sakila
 ```
 
 MySQL
 ```bash
 docker run --rm -d --name mysql tjcim/sample_dbs:mysql
+docker exec -it mysql mysql -pmysql -u root --host 127.0.0.1 --port 3306 -D sakila
 ```
 
 MSSQL
 ```bash
 docker run --rm -d --name mssql tjcim/sample_dbs:mssql
+docker exec -it mssql /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P S@mpleDBs1 -d sakila
 ```
 
 **NOTE:** `sqlcmd` will only run the SQL commands when you have `GO` on a line by itself. For example to select all rows from the actor table:
@@ -31,7 +34,7 @@ docker run --rm -d --name graphql -p 4000:4000 tjcim/sample_dbs:graphql
 
 sqlite
 ```bash
-docker run --rm -d --name sqlite tjcim/sample_dbs:sqlite
+docker run --rm -it --name sqlite tjcim/sample_dbs:sqlite
 ```
 
 ## Building the Images Locally
@@ -67,7 +70,7 @@ docker exec -it sakila_mysql mysql -pmysql -u root --host 127.0.0.1 --port 3306
 
 ```bash
 docker build -f sqlite/Dockerfile -t tjcim/sample_dbs:sqlite ./sqlite
-docker run --rm -d --name sqlite tjcim/sample_dbs:sqlite
+docker run --rm -it --name sqlite tjcim/sample_dbs:sqlite
 ```
 
 ### MSSQL
