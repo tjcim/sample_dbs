@@ -1,7 +1,9 @@
-.PHONY: postgres mysql mssql graphql sqlite
+.PHONY: postgres mysql mssql graphql sqlite all
 .DEFAULT_GOAL := postgres
 
 REPO=tjcim/sample_dbs
+
+all: postgres mysql mssql graphql sqlite
 
 postgres:
 	@echo "Building postgres"
