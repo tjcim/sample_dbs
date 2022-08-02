@@ -93,3 +93,24 @@ docker run --rm -d --name graphql -p 4000:4000 tjcim/sample_dbs:graphql
 ```
 
 Then visit [`http://localhost:4000`](http://localhost:4000)
+
+## Oracle Express Edition (XE)
+
+Since there is already a good example here: [https://hub.docker.com/r/gvenzl/oracle-xe](https://hub.docker.com/r/gvenzl/oracle-xe) I have just included the steps I take.
+
+**Keep in mind:**
+* The container image is *very* large.
+* The container will take a minute before it is ready.
+* This does not use the sakila database.
+
+Run the following **from the `oracle` directory**.
+```
+docker run --rm -d --name oracle -e ORACLE_PASSWORD=oracle -v $(pwd):/container-entrypoint-initdb.d gvenzl/oracle-xe:latest
+```
+
+It is going to take a minute for the DB to be ready. Monitor progress with `docker logs -f oracle`.
+
+Once the database is ready, connect to it with this:
+```
+docker exec -it oracle sqlplus test/test@//localhost/XEPDB1
+```
