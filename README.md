@@ -11,6 +11,7 @@ docker exec -it postgres psql -d sakila
 MySQL
 ```bash
 docker run --rm -d --name mysql tjcim/sample_dbs:mysql
+# MySQL will take maybe 30 seconds before it is ready. Monitor the progress with `docker logs -f mysql`
 docker exec -it mysql mysql -pmysql -u root -D sakila
 ```
 
