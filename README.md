@@ -32,6 +32,7 @@ GraphQL
 ```bash
 docker run --rm -d --name graphql -p 4000:4000 tjcim/sample_dbs:graphql
 ```
+Then visit: [`http://localhost:4000/graphql`](http://localhost:4000/graphql)
 
 sqlite
 ```bash
@@ -93,7 +94,7 @@ docker build -f graphql/Dockerfile -t tjcim/sample_dbs:graphql ./graphql
 docker run --rm -d --name graphql -p 4000:4000 tjcim/sample_dbs:graphql
 ```
 
-Then visit [`http://localhost:4000`](http://localhost:4000)
+Then visit [`http://localhost:4000/graphql`](http://localhost:4000/graphql)
 
 ## Oracle Express Edition (XE)
 
